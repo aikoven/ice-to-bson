@@ -13,6 +13,9 @@ npm install ice-to-bson
 ```js
 import {iceToBson, bsonToIce} from 'ice-to-bson';
 
+// Convert any JS object containing Ice Object values somewhere in the tree.
+// Converting Ice Structs not contained inside Ice Objects is not supported
+// due to Ice limitations.
 const bson = iceToBson(iceObject);
 
 const readIceObject = bsonToIce(bson);
