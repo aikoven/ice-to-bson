@@ -45,7 +45,7 @@ test('dump', assert => {
     ['bar', 'baz'],
     new Test.Base(24, new Ice.Long(Ice.Long.MAX_UINT32, 0)),
     new Test.SomeStruct(true),
-    [1, 2, 3],
+    [1, 2, 3]
   );
 
   const dict = new Ice.HashMap();
