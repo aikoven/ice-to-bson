@@ -31,7 +31,7 @@ function resetAddresses(object) {
 const isEqualCustomizer = (first, second) => {
   if (first instanceof Ice.HashMap) {
     return first.equals(second, (v1, v2) =>
-      isEqualWith(v1, v2, isEqualCustomizer),
+      isEqualWith(v1, v2, isEqualCustomizer)
     );
   }
 };
