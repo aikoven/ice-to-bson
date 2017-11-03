@@ -1,0 +1,25 @@
+{
+  "name": "ice-to-bson",
+  "version": "0.1.0",
+  "description": "Encode and decode ZeroC Ice objects into BSON objects",
+  "keywords": [
+    "Ice"
+  ],
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "test": "tape test/index.js",
+    "compile-slice": "slice2js --output-dir test test/Test.ice"
+  },
+  "author": "Daniel Lytkin <dan.lytkin@gmail.com>",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "bson": "^1.0.4",
+    "ice": "~3.6.3",
+    "ice-dump": "^2.0.3"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.4",
+    "tape": "^4.6.3"
+  }
+}
