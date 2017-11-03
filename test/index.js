@@ -22,8 +22,8 @@ function resetAddresses(object) {
   }
 
   if (typeof object === 'object') {
-    for (const value of Object.values(object)) {
-      resetAddresses(value);
+    for (const key of Object.keys(object)) {
+      resetAddresses(object[key]);
     }
   }
 }
