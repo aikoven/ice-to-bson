@@ -1,6 +1,6 @@
 {
   "name": "ice-to-bson",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Encode and decode ZeroC Ice objects into BSON objects",
   "keywords": [
     "Ice"
