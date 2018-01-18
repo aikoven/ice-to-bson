@@ -9,6 +9,7 @@ function isStruct(object) {
 }
 
 var hashMapKey = '@@iceHashMap';
+var mapKey = '@@iceMap';
 var longKey = '@@iceLong';
 
 module.exports.iceToBson = iceToBson;
@@ -25,21 +26,21 @@ function iceToBson(object) {
     return ret;
   }
 
-  if (object instanceof Ice.HashMap) {
+  if (object instanceof Ice.HashMap || object instanceof Map) {
     var entries = [];
 
-    object.forEach(function(key, value) {
+    object.forEach(function(value, key) {
       entries.push([iceToBson(key), iceToBson(value)]);
     });
 
     var ret = {entries};
-    ret[hashMapKey] = true;
+    ret[object instanceof Ice.HashMap ? hashMapKey : mapKey] = true;
 
     return ret;
   }
 
-  if (object instanceof Ice.Object) {
-    return new BSON.Binary(iceDump.objectToBuffer(object));
+  if (object instanceof Ice.Value) {
+    return new BSON.Binary(iceDump.valueToBuffer(object));
   }
 
   if (isStruct(object)) {
@@ -72,18 +73,18 @@ function bsonToIce(object) {
     return new Ice.Long(object.high, object.low);
   }
 
-  if (object[hashMapKey]) {
-    var hashMap = new Ice.HashMap();
+  if (object[hashMapKey] || object[mapKey]) {
+    var map = object[hashMapKey] ? new Ice.HashMap() : new Map();
 
     for (var entry of object.entries) {
-      hashMap.set(bsonToIce(entry[0]), bsonToIce(entry[1]));
+      map.set(bsonToIce(entry[0]), bsonToIce(entry[1]));
     }
 
-    return hashMap;
+    return map;
   }
 
   if (object instanceof BSON.Binary) {
-    return iceDump.bufferToObject(object.read(0, object.length()));
+    return iceDump.bufferToValue(object.read(0, object.length()));
   }
 
   if (Array.isArray(object)) {

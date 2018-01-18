@@ -15,8 +15,8 @@
   "license": "GPL-2.0",
   "dependencies": {
     "bson": "^1.0.4",
-    "ice": "~3.6.3",
-    "ice-dump": "^2.0.3"
+    "ice": "~3.7.0",
+    "ice-dump": "^3.0.1"
   },
   "devDependencies": {
     "lodash": "^4.17.4",
