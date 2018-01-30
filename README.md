@@ -1,5 +1,7 @@
 # Ice To BSON [![npm version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
+## Deprecated — use [ice-to-plain](https://github.com/aikoven/ice-to-plain) instead.
+
 Encode and decode ZeroC Ice objects into BSON objects.
 
 ## Installation
